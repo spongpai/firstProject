@@ -179,11 +179,13 @@ def test():
             #test_index = random.randint(0, lat.size)
             test_index = random_subset(range(0,lat.size), 5)    # remove ten points as a test data set
             gs = gridspec.GridSpec(3, 5)
-            plt.figure(i)
-            plt.subplot(gs[0,0])
+
+            #plt.figure(i)
+            #plt.subplot(gs[0,0])
+            #plot(lat, lon, values)
+
             # show result
             #plt.scatter(lat, lon, c=values, s=20)
-            plot(lat, lon, values)
             #plt.colorbar()
             plt.title('Original')
             print("origin std: ", values.std())
@@ -197,10 +199,10 @@ def test():
                 write_csv('error_level_0308.csv', result=("datetime:", dt.date(), dt.time(), ",level:",  level, ","
                                                                                                                 "nearest:", grid_unit, ",std:", np.nanstd(grid_z), ",rms:", se))
                 error[level-6,j] = se
-                plt.subplot(gs[(level-5)/5,(level-5)%5])
-                plt.contourf(grid_x,grid_y,grid_z)
-                plt.colorbar()
-                plt.title("%d[%1.3f,%1.3f]%1.5f" % (level, grid_unit[0], grid_unit[1], sqrt(se)))
+                #plt.subplot(gs[(level-5)/5,(level-5)%5])
+                #plt.contourf(grid_x,grid_y,grid_z)
+                #plt.colorbar()
+                #plt.title("%d[%1.3f,%1.3f]%1.5f" % (level, grid_unit[0], grid_unit[1], sqrt(se)))
             #plt.show()
         print error
         #rmse =  np.sqrt(error.mean(axis=1))
